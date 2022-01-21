@@ -19,22 +19,7 @@ namespace Company.Function
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            string firstNameGet = req.Query["firstName"];
-            string lastNameGet = req.Query["lastName"];
-
-            string nameGet = firstNameGet + lastNameGet;
-
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            
-            string firstNamePost = data?.firstNamePost;
-            string lastNamePost = data?.lastNamePost;
-
-            string namePost = firstNamePost + lastNamePost;
-
-            string responseMessage = string.IsNullOrEmpty(nameGet+namePost)
-                ? "Enter Name"
-                : $"Get Name: {nameGet}\n\nPost Name: {namePost}";
+            string responseMessage = "Thanks Azure Developer Community! <3";
 
             return new OkObjectResult(new {response = responseMessage});
         }
